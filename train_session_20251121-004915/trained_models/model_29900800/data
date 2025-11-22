@@ -1,0 +1,312 @@
+{
+    "policy_class": {
+        ":type:": "<class 'abc.ABCMeta'>",
+        ":serialized:": "gAWVRgAAAAAAAACMJHJsX3RyYWluLnRyYWluLnBvbGljaWVzLnJsX2FnZW50X2V4b5SMGUh1bWFuRXhvQWN0b3JDcml0aWNQb2xpY3mUk5Qu",
+        "__module__": "rl_train.train.policies.rl_agent_exo",
+        "_get_custom_policy_type": "<function HumanExoActorCriticPolicy._get_custom_policy_type at 0x0000024CE5868540>",
+        "_build_policy_network": "<function HumanExoActorCriticPolicy._build_policy_network at 0x0000024CE58685E0>",
+        "_get_exo_action_indices": "<function HumanExoActorCriticPolicy._get_exo_action_indices at 0x0000024CE5868680>",
+        "forward": "<function HumanExoActorCriticPolicy.forward at 0x0000024CE5868720>",
+        "_get_action_indices_for_net": "<function HumanExoActorCriticPolicy._get_action_indices_for_net at 0x0000024CE58687C0>",
+        "reset_network": "<function HumanExoActorCriticPolicy.reset_network at 0x0000024CE5868860>",
+        "__doc__": null,
+        "__abstractmethods__": "frozenset()",
+        "_abc_impl": "<_abc._abc_data object at 0x0000024CE588CFC0>"
+    },
+    "verbose": 2,
+    "policy_kwargs": {
+        "custom_policy_params": {
+            "reset_shared_net_after_load": false,
+            "reset_policy_net_after_load": false,
+            "reset_value_net_after_load": false,
+            "net_arch": {
+                "human_actor": [
+                    64,
+                    64
+                ],
+                "exo_actor": [
+                    8,
+                    8
+                ],
+                "common_critic": [
+                    64,
+                    64
+                ]
+            },
+            "log_std_init": 0.0,
+            "net_indexing_info": {
+                "human_actor": {
+                    "observation": [
+                        {
+                            "type": "range",
+                            "range": [
+                                0,
+                                8
+                            ],
+                            "comment": "8 qpos without lumbar_extension"
+                        },
+                        {
+                            "type": "range",
+                            "range": [
+                                8,
+                                17
+                            ],
+                            "comment": "9 qvel without lumbar_extension"
+                        },
+                        {
+                            "type": "range",
+                            "range": [
+                                17,
+                                28
+                            ],
+                            "comment": "11 left muscle activation"
+                        },
+                        {
+                            "type": "range",
+                            "range": [
+                                28,
+                                39
+                            ],
+                            "comment": "11 right muscle activation"
+                        },
+                        {
+                            "type": "range",
+                            "range": [
+                                39,
+                                43
+                            ],
+                            "comment": "4 foot force"
+                        },
+                        {
+                            "type": "range",
+                            "range": [
+                                43,
+                                44
+                            ],
+                            "comment": "target velocity"
+                        }
+                    ],
+                    "action": [
+                        {
+                            "type": "range_mapping",
+                            "range_net": [
+                                0,
+                                11
+                            ],
+                            "range_action": [
+                                0,
+                                11
+                            ],
+                            "comment": "r 11 muscle activation without exo"
+                        },
+                        {
+                            "type": "range_mapping",
+                            "range_net": [
+                                11,
+                                22
+                            ],
+                            "range_action": [
+                                11,
+                                22
+                            ],
+                            "comment": "l 11 muscle activation without exo"
+                        }
+                    ]
+                },
+                "exo_actor": {
+                    "observation": [
+                        {
+                            "type": "range",
+                            "range": [
+                                0,
+                                2
+                            ],
+                            "comment": "2 ankle angle in 8 qpos without lumbar_extension"
+                        },
+                        {
+                            "type": "range",
+                            "range": [
+                                8,
+                                10
+                            ],
+                            "comment": "2 angkle angular in 9 qvel without lumbar_extension"
+                        }
+                    ],
+                    "action": [
+                        {
+                            "type": "range_mapping",
+                            "range_net": [
+                                0,
+                                2
+                            ],
+                            "range_action": [
+                                22,
+                                24
+                            ],
+                            "comment": "2 for exo L, R"
+                        }
+                    ]
+                },
+                "common_critic": {
+                    "observation": [
+                        {
+                            "type": "range",
+                            "range": [
+                                0,
+                                8
+                            ],
+                            "comment": "8 qpos without lumbar_extension"
+                        },
+                        {
+                            "type": "range",
+                            "range": [
+                                8,
+                                17
+                            ],
+                            "comment": "9 qvel without lumbar_extension"
+                        },
+                        {
+                            "type": "range",
+                            "range": [
+                                17,
+                                28
+                            ],
+                            "comment": "11 left muscle activation"
+                        },
+                        {
+                            "type": "range",
+                            "range": [
+                                28,
+                                39
+                            ],
+                            "comment": "11 right muscle activation"
+                        },
+                        {
+                            "type": "range",
+                            "range": [
+                                39,
+                                43
+                            ],
+                            "comment": "4 foot force"
+                        },
+                        {
+                            "type": "range",
+                            "range": [
+                                43,
+                                44
+                            ],
+                            "comment": "target velocity"
+                        }
+                    ]
+                }
+            },
+            "human_observation_indices": [],
+            "exo_observation_indices": [],
+            "human_action_size": 0,
+            "exo_action_size": 0
+        }
+    },
+    "num_timesteps": 29900800,
+    "_total_timesteps": 30000000.0,
+    "_num_timesteps_at_start": 0,
+    "seed": null,
+    "action_noise": null,
+    "start_time": 1763704391641426700,
+    "learning_rate": 0.0001,
+    "tensorboard_log": null,
+    "_last_obs": {
+        ":type:": "<class 'numpy.ndarray'>",
+        ":serialized:": "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"
+    },
+    "_last_episode_starts": {
+        ":type:": "<class 'numpy.ndarray'>",
+        ":serialized:": "gAWVtAAAAAAAAACME251bXB5Ll9jb3JlLm51bWVyaWOUjAtfZnJvbWJ1ZmZlcpSTlCiWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAABAAAAAAAAAAAAAAAAAAAAAAAAlIwFbnVtcHmUjAVkdHlwZZSTlIwCYjGUiYiHlFKUKEsDjAF8lE5OTkr/////Sv////9LAHSUYktAhZSMAUOUdJRSlC4="
+    },
+    "_last_original_obs": null,
+    "_episode_num": 0,
+    "use_sde": false,
+    "sde_sample_freq": -1,
+    "_current_progress_remaining": 0.0038527999999999896,
+    "_stats_window_size": 100,
+    "ep_info_buffer": {
+        ":type:": "<class 'collections.deque'>",
+        ":serialized:": "gAWVIAAAAAAAAACMC2NvbGxlY3Rpb25zlIwFZGVxdWWUk5QpS2SGlFKULg=="
+    },
+    "ep_success_buffer": {
+        ":type:": "<class 'collections.deque'>",
+        ":serialized:": "gAWVIAAAAAAAAACMC2NvbGxlY3Rpb25zlIwFZGVxdWWUk5QpS2SGlFKULg=="
+    },
+    "_n_updates": 44344,
+    "observation_space": {
+        ":type:": "<class 'gymnasium.spaces.box.Box'>",
+        ":serialized:": "gAWVOgMAAAAAAACMFGd5bW5hc2l1bS5zcGFjZXMuYm94lIwDQm94lJOUKYGUfZQojAVkdHlwZZSMBW51bXB5lIwFZHR5cGWUk5SMAmY0lImIh5RSlChLA4wBPJROTk5K/////0r/////SwB0lGKMDWJvdW5kZWRfYmVsb3eUjBNudW1weS5fY29yZS5udW1lcmljlIwLX2Zyb21idWZmZXKUk5QoliwAAAAAAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQGUaAiMAmIxlImIh5RSlChLA4wBfJROTk5K/////0r/////SwB0lGJLLIWUjAFDlHSUUpSMDWJvdW5kZWRfYWJvdmWUaBEoliwAAAAAAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQGUaBVLLIWUaBl0lFKUjAZfc2hhcGWUSyyFlIwDbG93lGgRKJawAAAAAAAAAAAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBAAAgwQAAIMEAACDBlGgLSyyFlGgZdJRSlIwEaGlnaJRoESiWsAAAAAAAAAAAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQQAAIEEAACBBAAAgQZRoC0sshZRoGXSUUpSMCGxvd19yZXBylIwFLTEwLjCUjAloaWdoX3JlcHKUjAQxMC4wlIwKX25wX3JhbmRvbZROdWIu",
+        "dtype": "float32",
+        "bounded_below": "[ True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True]",
+        "bounded_above": "[ True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True]",
+        "_shape": [
+            44
+        ],
+        "low": "[-10. -10. -10. -10. -10. -10. -10. -10. -10. -10. -10. -10. -10. -10.\n -10. -10. -10. -10. -10. -10. -10. -10. -10. -10. -10. -10. -10. -10.\n -10. -10. -10. -10. -10. -10. -10. -10. -10. -10. -10. -10. -10. -10.\n -10. -10.]",
+        "high": "[10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10.\n 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10. 10.\n 10. 10. 10. 10. 10. 10. 10. 10.]",
+        "low_repr": "-10.0",
+        "high_repr": "10.0",
+        "_np_random": null
+    },
+    "action_space": {
+        ":type:": "<class 'gymnasium.spaces.box.Box'>",
+        ":serialized:": "gAWVcAIAAAAAAACMFGd5bW5hc2l1bS5zcGFjZXMuYm94lIwDQm94lJOUKYGUfZQojAVkdHlwZZSMBW51bXB5lIwFZHR5cGWUk5SMAmY0lImIh5RSlChLA4wBPJROTk5K/////0r/////SwB0lGKMDWJvdW5kZWRfYmVsb3eUjBNudW1weS5fY29yZS5udW1lcmljlIwLX2Zyb21idWZmZXKUk5QolhgAAAAAAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBlGgIjAJiMZSJiIeUUpQoSwOMAXyUTk5OSv////9K/////0sAdJRiSxiFlIwBQ5R0lFKUjA1ib3VuZGVkX2Fib3ZllGgRKJYYAAAAAAAAAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAZRoFUsYhZRoGXSUUpSMBl9zaGFwZZRLGIWUjANsb3eUaBEolmAAAAAAAAAAAACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/lGgLSxiFlGgZdJRSlIwEaGlnaJRoESiWYAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD+UaAtLGIWUaBl0lFKUjAhsb3dfcmVwcpSMBC0xLjCUjAloaWdoX3JlcHKUjAMxLjCUjApfbnBfcmFuZG9tlE51Yi4=",
+        "dtype": "float32",
+        "bounded_below": "[ True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True]",
+        "bounded_above": "[ True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True]",
+        "_shape": [
+            24
+        ],
+        "low": "[-1. -1. -1. -1. -1. -1. -1. -1. -1. -1. -1. -1. -1. -1. -1. -1. -1. -1.\n -1. -1. -1. -1. -1. -1.]",
+        "high": "[1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]",
+        "low_repr": "-1.0",
+        "high_repr": "1.0",
+        "_np_random": null
+    },
+    "n_envs": 64,
+    "n_steps": 256,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "ent_coef": 0.001,
+    "vf_coef": 0.5,
+    "max_grad_norm": 0.5,
+    "rollout_buffer_class": {
+        ":type:": "<class 'abc.ABCMeta'>",
+        ":serialized:": "gAWVNgAAAAAAAACMIHN0YWJsZV9iYXNlbGluZXMzLmNvbW1vbi5idWZmZXJzlIwNUm9sbG91dEJ1ZmZlcpSTlC4=",
+        "__module__": "stable_baselines3.common.buffers",
+        "__annotations__": "{'observations': <class 'numpy.ndarray'>, 'actions': <class 'numpy.ndarray'>, 'rewards': <class 'numpy.ndarray'>, 'advantages': <class 'numpy.ndarray'>, 'returns': <class 'numpy.ndarray'>, 'episode_starts': <class 'numpy.ndarray'>, 'log_probs': <class 'numpy.ndarray'>, 'values': <class 'numpy.ndarray'>}",
+        "__doc__": "\n    Rollout buffer used in on-policy algorithms like A2C/PPO.\n    It corresponds to ``buffer_size`` transitions collected\n    using the current policy.\n    This experience will be discarded after the policy update.\n    In order to use PPO objective, we also store the current value of each state\n    and the log probability of each taken action.\n\n    The term rollout here refers to the model-free notion and should not\n    be used with the concept of rollout used in model-based RL or planning.\n    Hence, it is only involved in policy and value function training but not action selection.\n\n    :param buffer_size: Max number of element in the buffer\n    :param observation_space: Observation space\n    :param action_space: Action space\n    :param device: PyTorch device\n    :param gae_lambda: Factor for trade-off of bias vs variance for Generalized Advantage Estimator\n        Equivalent to classic advantage when set to 1.\n    :param gamma: Discount factor\n    :param n_envs: Number of parallel environments\n    ",
+        "__init__": "<function RolloutBuffer.__init__ at 0x0000024CE54E6340>",
+        "reset": "<function RolloutBuffer.reset at 0x0000024CE54E63E0>",
+        "compute_returns_and_advantage": "<function RolloutBuffer.compute_returns_and_advantage at 0x0000024CE54E6480>",
+        "add": "<function RolloutBuffer.add at 0x0000024CE54E65C0>",
+        "get": "<function RolloutBuffer.get at 0x0000024CE54E6660>",
+        "_get_samples": "<function RolloutBuffer._get_samples at 0x0000024CE54E6700>",
+        "__abstractmethods__": "frozenset()",
+        "_abc_impl": "<_abc._abc_data object at 0x0000024CE5469C80>"
+    },
+    "rollout_buffer_kwargs": {},
+    "batch_size": 8192,
+    "n_epochs": 30,
+    "clip_range": {
+        ":type:": "<class 'stable_baselines3.common.utils.FloatSchedule'>",
+        ":serialized:": "gAWVeQAAAAAAAACMHnN0YWJsZV9iYXNlbGluZXMzLmNvbW1vbi51dGlsc5SMDUZsb2F0U2NoZWR1bGWUk5QpgZR9lIwOdmFsdWVfc2NoZWR1bGWUaACMEENvbnN0YW50U2NoZWR1bGWUk5QpgZR9lIwDdmFslEc/yZmZmZmZmnNic2Iu",
+        "value_schedule": "ConstantSchedule(val=0.2)"
+    },
+    "clip_range_vf": {
+        ":type:": "<class 'stable_baselines3.common.utils.FloatSchedule'>",
+        ":serialized:": "gAWVeQAAAAAAAACMHnN0YWJsZV9iYXNlbGluZXMzLmNvbW1vbi51dGlsc5SMDUZsb2F0U2NoZWR1bGWUk5QpgZR9lIwOdmFsdWVfc2NoZWR1bGWUaACMEENvbnN0YW50U2NoZWR1bGWUk5QpgZR9lIwDdmFslEdAWQAAAAAAAHNic2Iu",
+        "value_schedule": "ConstantSchedule(val=100.0)"
+    },
+    "normalize_advantage": true,
+    "target_kl": 0.01,
+    "lr_schedule": {
+        ":type:": "<class 'stable_baselines3.common.utils.FloatSchedule'>",
+        ":serialized:": "gAWVeQAAAAAAAACMHnN0YWJsZV9iYXNlbGluZXMzLmNvbW1vbi51dGlsc5SMDUZsb2F0U2NoZWR1bGWUk5QpgZR9lIwOdmFsdWVfc2NoZWR1bGWUaACMEENvbnN0YW50U2NoZWR1bGWUk5QpgZR9lIwDdmFslEc/Gjbi6xxDLXNic2Iu",
+        "value_schedule": "ConstantSchedule(val=0.0001)"
+    }
+}
